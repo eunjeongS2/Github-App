@@ -5,6 +5,7 @@ import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import kotlinx.android.synthetic.main.fragment_overview.*
 import kotlinx.android.synthetic.main.fragment_profile.view.*
 import kr.ac.ajou.github.util.ViewPagerAdapter
 
@@ -26,6 +27,7 @@ class ProfileFragment : Fragment() {
         for(i in 0 until (view.profileViewPager.adapter as ViewPagerAdapter).count){
             view.profileTabLayout.getTabAt(i)?.text = pageAdapter?.getFragmentInfo(i)?.text
         }
+
 
         return view
     }

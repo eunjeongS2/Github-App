@@ -1,8 +1,10 @@
 package kr.ac.ajou.github.api
 
+import android.text.Html
 import retrofit2.Call
 import retrofit2.http.*
 import kr.ac.ajou.github.api.model.Auth
+import okhttp3.ResponseBody
 
 // https://github.com
 interface AuthApi {

@@ -30,18 +30,23 @@ class HomeFragment : Fragment() {
         eventApiCall?.enqueue({
             it.body()?.let {
                 Log.i("HomeFragment", it.toString())
+                setRecyclerView(view.homeRecyclerView, it)
 
-                val adapter = EventAdapter()
-                view.homeRecyclerView.layoutManager = LinearLayoutManager(context)
-                adapter.items = it
-                view.homeRecyclerView.adapter = adapter
-                view.homeRecyclerView.addItemDecoration(DividerItemDecoration(context, LinearLayoutManager(context).orientation))
             }
         }, {
 
         })
 
         return view
+    }
+
+    private fun setRecyclerView(recyclerView: RecyclerView, events: List<Event>){
+        val adapter = EventAdapter()
+        recyclerView.layoutManager = LinearLayoutManager(context)
+        adapter.items = events
+        recyclerView.adapter = adapter
+        recyclerView.addItemDecoration(DividerItemDecoration(context, LinearLayoutManager(context).orientation))
+
     }
 }
 
@@ -59,7 +64,7 @@ class EventAdapter : RecyclerView.Adapter<EventViewHolder>() {
     @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: EventViewHolder, position: Int) {
         val item = items[position]
-        val type = generateType(items[position].type)
+        val type = generateType(item.type)
 
         with(holder.itemView) {
             homeIdTextView.text = item.actor.login

@@ -6,6 +6,17 @@
     <color name="colorBlack">#000</color>
     <color name="colorGray">#e8e8e8</color>
     <color name="colorWhite">#ffffff</color>
+    <color name="colorBlue">#327bef</color>
+
+    <color name="colorPHP">#515E91</color>
+    <color name="colorSwift">#F4AF5A</color>
+    <color name="colorKotlin">#E49248</color>
+    <color name="colorJava">#A8742F</color>
+    <color name="colorJavaScript">#EFDF70</color>
+    <color name="colorObjectiveC">#538FF7</color>
+    <color name="colorHTML">#D35635</color>
+    <color name="colorCSS">#523F78</color>
+
 
 
 </resources>

@@ -5,8 +5,8 @@ import retrofit2.http.GET
 import retrofit2.http.Query
 import kr.ac.ajou.github.api.model.RepoSearchResponse
 import kr.ac.ajou.github.api.model.Event
+import kr.ac.ajou.github.api.model.Repository
 import kr.ac.ajou.github.api.model.User
-import retrofit2.http.Field
 import retrofit2.http.Path
 
 interface GithubApi {
@@ -19,5 +19,8 @@ interface GithubApi {
 
     @GET("user")
     fun getUser(@Query("client_id") clientId: String): Call<User>
+
+    @GET("users/{user}/repos")
+    fun getPinnedRepositories(@Path("user") user: String): Call<List<Repository>>
 
 }

@@ -7,7 +7,6 @@ import android.os.Bundle
 import android.support.customtabs.CustomTabsIntent
 import android.util.Log
 import kotlinx.android.synthetic.main.activity_auth.*
-import kotlinx.android.synthetic.main.drawer_header.view.*
 import kr.ac.ajou.github.api.*
 import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.toast

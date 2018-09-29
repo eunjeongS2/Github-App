@@ -12,7 +12,6 @@ import android.view.View
 import android.view.ViewGroup
 import com.bumptech.glide.annotation.GlideModule
 import com.bumptech.glide.module.AppGlideModule
-import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.fragment_home.view.*
 import kotlinx.android.synthetic.main.item_home.view.*
 import kr.ac.ajou.github.api.getUser

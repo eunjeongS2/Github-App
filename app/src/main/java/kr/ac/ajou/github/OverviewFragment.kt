@@ -31,14 +31,15 @@ class OverviewFragment : Fragment() {
             setContributionWebView(view.contributionsWebView)
 
         }
+
         val repositoryCall = context?.let { context ->
             getUser(context)?.login?.let{ user ->
-                provideGithubApi(context).getPinnedRepositories(user) } }
+                provideGithubApi(context).getUserRepositories(user) } }
 
         repositoryCall?.enqueue({
             it.body()?.let {
 
-                setRecyclerView(view.repositoriesRecyclerView, it)
+                setRecyclerView(view.pinnedRepositoriesRecyclerView, it)
 
             }
         }, {
@@ -121,19 +122,19 @@ class PinnedRepositoriesAdapter : RecyclerView.Adapter<PinnedRepositoriesViewHol
             starsTextView.text = item.stars
         }
     }
+}
 
-    private fun generateLanguage(language: String?): Int{
-        return when(language) {
-            "Java" -> R.color.colorJava
-            "Kotlin" -> R.color.colorKotlin
-            "JavaScript" -> R.color.colorJavaScript
-            "HTML" -> R.color.colorHTML
-            "Swift" -> R.color.colorSwift
-            "PHP" -> R.color.colorPHP
-            "Objective-C" -> R.color.colorObjectiveC
-            null -> R.color.colorWhite
+fun generateLanguage(language: String?): Int{
+    return when(language) {
+        "Java" -> R.color.colorJava
+        "Kotlin" -> R.color.colorKotlin
+        "JavaScript" -> R.color.colorJavaScript
+        "HTML" -> R.color.colorHTML
+        "Swift" -> R.color.colorSwift
+        "PHP" -> R.color.colorPHP
+        "Objective-C" -> R.color.colorObjectiveC
+        null -> R.color.colorWhite
 
-            else -> R.color.colorSwift
-        }
+        else -> R.color.colorSwift
     }
 }

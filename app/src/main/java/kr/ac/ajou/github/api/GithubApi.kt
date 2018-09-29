@@ -21,6 +21,9 @@ interface GithubApi {
     fun getUser(@Query("client_id") clientId: String): Call<User>
 
     @GET("users/{user}/repos")
-    fun getPinnedRepositories(@Path("user") user: String): Call<List<Repository>>
+    fun getUserRepositories(@Path("user") user: String): Call<List<Repository>>
+
+    @GET("users/{user}/starred")
+    fun getUserStarredRepositories(@Path("user") user: String): Call<List<Repository>>
 
 }

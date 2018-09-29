@@ -14,9 +14,9 @@ class IssueFragment : Fragment() {
 
         val pageAdapter = fragmentManager?.let { ViewPagerAdapter(it) }
 
-        pageAdapter?.addFragment(title = "Created", fragment = OverviewFragment())
-        pageAdapter?.addFragment(title = "Assigned", fragment = RepositoriesFragment())
-        pageAdapter?.addFragment(title = "Mentioned", fragment = StarsFragment())
+        pageAdapter?.addFragment(title = "Created", fragment = CreatedFragment())
+        pageAdapter?.addFragment(title = "Assigned", fragment = AssignedFragment())
+        pageAdapter?.addFragment(title = "Mentioned", fragment = MentionedFragment())
 
         view.issueViewPager.adapter = pageAdapter
         view.issueTabLayout.setupWithViewPager(view.issueViewPager)

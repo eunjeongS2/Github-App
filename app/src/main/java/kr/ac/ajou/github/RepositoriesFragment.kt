@@ -1,7 +1,6 @@
 package kr.ac.ajou.github
 
 import android.annotation.SuppressLint
-import android.content.Context
 import android.graphics.drawable.GradientDrawable
 import android.os.Bundle
 import android.support.v4.app.Fragment
@@ -31,9 +30,7 @@ class RepositoriesFragment: Fragment() {
 
         repositoryCall?.enqueue({
             it.body()?.let {
-
-                context?.let { context -> setRepositoryRecyclerView(view.repositoriesRecyclerView, it, context, javaClass.simpleName) }
-
+                setRepositoryRecyclerView(view.repositoriesRecyclerView, it, javaClass.simpleName)
             }
         }, {
 
@@ -44,13 +41,15 @@ class RepositoriesFragment: Fragment() {
 
 }
 
-fun setRepositoryRecyclerView(recyclerView: RecyclerView, repositories: List<Repository>, context: Context, fragment: String){
-    val adapter = RepositoriesAdapter(fragment)
-    recyclerView.layoutManager = LinearLayoutManager(context)
-    adapter.items = repositories
-    recyclerView.adapter = adapter
-    recyclerView.addItemDecoration(DividerItemDecoration(context, LinearLayoutManager(context).orientation))
+fun setRepositoryRecyclerView(recyclerView: RecyclerView, repositories: List<Repository>, fragment: String){
+    val repositoriesAdapter = RepositoriesAdapter(fragment)
+    repositoriesAdapter.items = repositories
 
+    recyclerView.run {
+        layoutManager = LinearLayoutManager(context)
+        adapter = repositoriesAdapter
+        addItemDecoration(DividerItemDecoration(context, LinearLayoutManager(context).orientation))
+    }
 }
 
 class RepositoriesViewHolder(parent: ViewGroup)

@@ -40,12 +40,14 @@ class HomeFragment : Fragment() {
     }
 
     private fun setRecyclerView(recyclerView: RecyclerView, events: List<Event>){
-        val adapter = EventAdapter()
-        recyclerView.layoutManager = LinearLayoutManager(context)
-        adapter.items = events
-        recyclerView.adapter = adapter
-        recyclerView.addItemDecoration(DividerItemDecoration(context, LinearLayoutManager(context).orientation))
+        val eventAdapter = EventAdapter()
+        eventAdapter.items = events
 
+        recyclerView.run {
+            layoutManager = LinearLayoutManager(context)
+            adapter = eventAdapter
+            addItemDecoration(DividerItemDecoration(context, LinearLayoutManager(context).orientation))
+        }
     }
 }
 
@@ -71,7 +73,7 @@ class EventAdapter : RecyclerView.Adapter<EventViewHolder>() {
             homeBodyTextView.text = type.first+" "+item.repo.name
 
             GlideApp.with(this)
-                    .load(item.actor.imageUrl)
+                    .load(item.actor.image)
                     .into(homeProfileImageView)
 
             val formatter = DateTimeFormat.forPattern("MMM dd, yyyy")

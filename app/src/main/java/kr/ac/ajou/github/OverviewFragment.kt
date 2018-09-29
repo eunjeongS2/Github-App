@@ -52,13 +52,14 @@ class OverviewFragment : Fragment() {
     @SuppressLint("SetJavaScriptEnabled", "ClickableViewAccessibility")
     private fun setContributionWebView(webView: WebView){
 
-        webView.visibility = View.INVISIBLE
-        webView.loadUrl("https://github.com/users/${context?.let { getUser(it)?.login }}/contributions")
-
-        webView.settings.javaScriptEnabled = true
-        webView.setInitialScale(((webView.width.toDouble()/669)*100).toInt())
-        webView.settings.loadWithOverviewMode = true
-        webView.settings.useWideViewPort = true
+        webView.run {
+            visibility = View.INVISIBLE
+            loadUrl("https://github.com/users/${context?.let { getUser(it)?.login }}/contributions")
+            settings.javaScriptEnabled = true
+            setInitialScale(((webView.width.toDouble()/669)*100).toInt())
+            settings.loadWithOverviewMode = true
+            settings.useWideViewPort = true
+        }
 
         webView.setOnTouchListener { _, p1 ->
             return@setOnTouchListener (p1.action == MotionEvent.ACTION_MOVE)
@@ -79,18 +80,24 @@ class OverviewFragment : Fragment() {
     }
 
     private fun setRecyclerView(recyclerView: RecyclerView, repositories: List<Repository>){
-        val adapter = PinnedRepositoriesAdapter()
-        recyclerView.layoutManager = LinearLayoutManager(context)
-        adapter.items = repositories
-        recyclerView.adapter = adapter
+        val pinnedAdapter = PinnedRepositoriesAdapter()
+        pinnedAdapter.items = repositories
+
+        recyclerView.run {
+            layoutManager = LinearLayoutManager(context)
+            adapter = pinnedAdapter
+        }
     }
 
     private fun setContributionsHeight(view: View){
         val constraintSet = ConstraintSet()
-        constraintSet.clone(view.overviewLayout)
-        constraintSet.setVerticalBias(R.id.guideline,
-                ((((104.0/669.0)*view.contributionsWebView.width) + view.contributionTextView.height + 90)/view.height).toFloat())
-        constraintSet.applyTo(view.overviewLayout)
+        constraintSet.apply {
+            clone(view.overviewLayout)
+            setVerticalBias(R.id.guideline,
+                    ((((104.0/669.0)*view.contributionsWebView.width) + view.contributionTextView.height + 90)/view.height).toFloat())
+            applyTo(view.overviewLayout)
+
+        }
     }
 }
 

@@ -15,7 +15,7 @@ interface GithubApi {
     fun searchRepository(@Query("q") query: String): Call<RepoSearchResponse>
 
     @GET("users/{user}/received_events/public")
-    fun getEvent(@Path("user") path: String): Call<List<Event>>
+    fun getEvent(@Path("user") user: String): Call<List<Event>>
 
     @GET("user")
     fun getUser(@Query("client_id") clientId: String): Call<User>
@@ -25,5 +25,14 @@ interface GithubApi {
 
     @GET("users/{user}/starred")
     fun getUserStarredRepositories(@Path("user") user: String): Call<List<Repository>>
+
+    @GET("/users/{user}/followers")
+    fun getUserFollowers(@Path("user") user: String): Call<List<User>>
+
+    @GET("/users/{user}")
+    fun getUserName(@Path("user") user: String): Call<User>
+
+    @GET("/users/{user}/following")
+    fun getUserFollowing(@Path("user") user: String): Call<List<User>>
 
 }

@@ -20,7 +20,7 @@ class StarsFragment : Fragment() {
         repositoryCall?.enqueue({
             it.body()?.let {
 
-                context?.let { context -> setRepositoryRecyclerView(view.starRecyclerView, it, context, javaClass.simpleName) }
+                setRepositoryRecyclerView(view.starRecyclerView, it, javaClass.simpleName)
 
             }
         }, {

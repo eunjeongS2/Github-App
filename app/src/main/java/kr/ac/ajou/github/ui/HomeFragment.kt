@@ -1,4 +1,4 @@
-package kr.ac.ajou.github
+package kr.ac.ajou.github.ui
 
 import android.annotation.SuppressLint
 import android.os.Bundle
@@ -14,6 +14,7 @@ import com.bumptech.glide.annotation.GlideModule
 import com.bumptech.glide.module.AppGlideModule
 import kotlinx.android.synthetic.main.fragment_home.view.*
 import kotlinx.android.synthetic.main.item_home.view.*
+import kr.ac.ajou.github.R
 import kr.ac.ajou.github.api.getUser
 import kr.ac.ajou.github.api.model.Event
 import kr.ac.ajou.github.api.provideGithubApi
@@ -89,7 +90,7 @@ class EventAdapter : RecyclerView.Adapter<EventViewHolder>() {
             "CreateEvent" -> Pair("created a repository at", R.drawable.ic_repo)
             "ForkEvent" -> Pair("forked from", R.drawable.ic_repo_forked)
             "WatchEvent" -> Pair("starred", R.drawable.ic_star)
-            else -> Pair("",R.drawable.ic_repo_push)
+            else -> Pair("", R.drawable.ic_repo_push)
         }
     }
 }

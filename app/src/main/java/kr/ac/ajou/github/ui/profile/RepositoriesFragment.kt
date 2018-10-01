@@ -1,4 +1,4 @@
-package kr.ac.ajou.github
+package kr.ac.ajou.github.ui.profile
 
 import android.annotation.SuppressLint
 import android.graphics.drawable.GradientDrawable
@@ -13,9 +13,11 @@ import android.view.View
 import android.view.ViewGroup
 import kotlinx.android.synthetic.main.fragment_repositories.view.*
 import kotlinx.android.synthetic.main.item_repository.view.*
+import kr.ac.ajou.github.R
 import kr.ac.ajou.github.api.getUser
 import kr.ac.ajou.github.api.model.Repository
 import kr.ac.ajou.github.api.provideGithubApi
+import kr.ac.ajou.github.ui.enqueue
 import org.joda.time.LocalDateTime
 import org.joda.time.format.DateTimeFormat
 import kotlin.properties.Delegates

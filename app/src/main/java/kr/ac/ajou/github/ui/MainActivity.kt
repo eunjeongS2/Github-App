@@ -1,4 +1,4 @@
-package kr.ac.ajou.github
+package kr.ac.ajou.github.ui
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
@@ -7,7 +7,10 @@ import android.view.LayoutInflater
 import android.view.View
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.drawer_header.view.*
+import kr.ac.ajou.github.ui.profile.ProfileFragment
+import kr.ac.ajou.github.R
 import kr.ac.ajou.github.api.getUser
+import kr.ac.ajou.github.ui.issue.IssueFragment
 import kr.ac.ajou.github.util.ViewPagerAdapter
 
 class MainActivity : AppCompatActivity() {
@@ -61,7 +64,7 @@ class MainActivity : AppCompatActivity() {
             loginTextView.text = getUser(this@MainActivity)?.login
             nameTextView.text = getUser(this@MainActivity)?.name
 
-            kr.ac.ajou.github.GlideApp.with(this)
+            GlideApp.with(this)
                     .load(getUser(this@MainActivity)?.image)
                     .into(userImageView)
 

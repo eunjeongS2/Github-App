@@ -1,4 +1,4 @@
-package kr.ac.ajou.github
+package kr.ac.ajou.github.ui
 
 import android.content.Intent
 import android.net.Uri
@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.support.customtabs.CustomTabsIntent
 import android.util.Log
 import kotlinx.android.synthetic.main.activity_auth.*
+import kr.ac.ajou.github.R
 import kr.ac.ajou.github.api.*
 import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.toast

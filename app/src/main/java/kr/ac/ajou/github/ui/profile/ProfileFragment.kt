@@ -1,4 +1,4 @@
-package kr.ac.ajou.github
+package kr.ac.ajou.github.ui.profile
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import kotlinx.android.synthetic.main.fragment_profile.view.*
+import kr.ac.ajou.github.R
 import kr.ac.ajou.github.util.ViewPagerAdapter
 
 class ProfileFragment : Fragment() {
